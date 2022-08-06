@@ -1,3 +1,11 @@
+/*
+ * @Author: yankangjie
+ * @Date: 2022-08-06 12:01:20
+ * @LastEditors: yankangjie
+ * @LastEditTime: 2022-08-06 12:04:07
+ * @FilePath: /index.js
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 const Koa = require("koa");
 const Router = require("koa-router");
 const logger = require("koa-logger");
@@ -5,6 +13,7 @@ const bodyParser = require("koa-bodyparser");
 const fs = require("fs");
 const path = require("path");
 const { init: initDB, Counter } = require("./db");
+import './router/index'
 
 const router = new Router();
 
