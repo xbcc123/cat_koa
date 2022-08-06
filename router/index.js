@@ -2,13 +2,14 @@
  * @Author: yankangjie
  * @Date: 2022-08-06 12:03:13
  * @LastEditors: yankangjie
- * @LastEditTime: 2022-08-06 12:06:54
+ * @LastEditTime: 2022-08-06 12:16:31
  * @FilePath: /router/index.js
  * @Description: router
  */
 
 const Router = require("koa-router");
 const router = new Router();
+const { init: initDB, Counter } = require("./db");
 
 // 猫咪列表
 router.post("/api/cat-list", async (ctx) => {
