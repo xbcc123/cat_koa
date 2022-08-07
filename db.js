@@ -20,13 +20,24 @@ const Counter = sequelize.define("Counter", {
   },
 });
 
+const cat_list = sequelize.define('cat_list', {
+  title: DataTypes.TEXT,
+  content: DataTypes.TEXT,
+  read: DataTypes.INTEGER,
+}, {
+  tableName: 'cat_list'
+});
+
 // 数据库初始化方法
 async function init() {
-  await Counter.sync({ alter: true });
+  // await Counter.sync({ alter: true });
+  await Counter.sync();
+  await cat_list.sync({ alter: true });
 }
 
 // 导出初始化方法和模型
 module.exports = {
   init,
   Counter,
+  cat_list,
 };
