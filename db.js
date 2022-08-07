@@ -1,3 +1,11 @@
+/*
+ * @Author: yankangjie
+ * @Date: 2022-08-06 12:01:20
+ * @LastEditors: yankangjie
+ * @LastEditTime: 2022-08-08 00:54:26
+ * @FilePath: /db.js
+ * @Description: 数据库配置
+ */
 const { Sequelize, DataTypes } = require("sequelize");
 
 // 从环境变量中读取数据库配置
@@ -23,6 +31,7 @@ const Counter = sequelize.define("Counter", {
 const cat_list = sequelize.define('cat_list', {
   title: DataTypes.TEXT,
   content: DataTypes.TEXT,
+  conver: DataTypes.STRING,
   read: DataTypes.INTEGER,
 }, {
   tableName: 'cat_list'
@@ -30,7 +39,6 @@ const cat_list = sequelize.define('cat_list', {
 
 // 数据库初始化方法
 async function init() {
-  // await Counter.sync({ alter: true });
   await Counter.sync();
   await cat_list.sync({ alter: true });
 }
