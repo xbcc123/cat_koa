@@ -2,7 +2,7 @@
  * @Author: yankangjie
  * @Date: 2022-08-06 12:01:20
  * @LastEditors: yankangjie
- * @LastEditTime: 2022-08-08 00:54:26
+ * @LastEditTime: 2022-08-08 01:03:21
  * @FilePath: /db.js
  * @Description: 数据库配置
  */
@@ -31,7 +31,7 @@ const Counter = sequelize.define("Counter", {
 const cat_list = sequelize.define('cat_list', {
   title: DataTypes.TEXT,
   content: DataTypes.TEXT,
-  conver: DataTypes.STRING,
+  cover: DataTypes.STRING,
   read: DataTypes.INTEGER,
 }, {
   tableName: 'cat_list'
