@@ -16,12 +16,9 @@ services:
       - wxcloud=cat_koa
       - role=container
     environment:
-      # - MYSQL_USERNAME=root
-      # - MYSQL_PASSWORD=CH3ARvEa
-      # - MYSQL_ADDRESS=sh-cynosdbmysql-grp-jrljs3rs.sql.tencentcdb.com:24898
-      - MYSQL_USERNAME=
-      - MYSQL_PASSWORD=
-      - MYSQL_ADDRESS=
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=CH3ARvEa
+      - MYSQL_ADDRESS=sh-cynosdbmysql-grp-jrljs3rs.sql.tencentcdb.com:24898
 networks:
   default:
     external:
