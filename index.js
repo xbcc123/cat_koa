@@ -2,7 +2,7 @@
  * @Author: yankangjie
  * @Date: 2022-08-06 12:01:20
  * @LastEditors: yankangjie
- * @LastEditTime: 2022-08-08 20:23:47
+ * @LastEditTime: 2022-08-08 20:39:30
  * @FilePath: /index.js
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -128,6 +128,23 @@ router.post("/api/cat-disease-detail", async (ctx) => {
     };
 });
 
+// 增加猫咪
+router.post("/api/add-cat-disease-list", async (ctx) => {
+    const { request } = ctx;
+    const { title, content, cover } = request.body;
+    await cat_disease.create({
+        title,
+        content,
+        read: 0,
+        cover
+    });
+    ctx.body = {
+        code: 0,
+        data: await cat_disease.count(),
+    };
+});
+
+
 // 猫咪疾病列表
 router.post("/api/cat-raise-list", async (ctx) => {
     const { request } = ctx;
@@ -156,6 +173,21 @@ router.post("/api/cat-raise-detail", async (ctx) => {
     ctx.body = {
         code: 0,
         data: result[0],
+    };
+});
+
+router.post("/api/add-cat-raise-list", async (ctx) => {
+    const { request } = ctx;
+    const { title, content, cover } = request.body;
+    await cat_raise.create({
+        title,
+        content,
+        read: 0,
+        cover
+    });
+    ctx.body = {
+        code: 0,
+        data: await cat_raise.count(),
     };
 });
 
