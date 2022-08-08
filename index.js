@@ -2,7 +2,7 @@
  * @Author: yankangjie
  * @Date: 2022-08-06 12:01:20
  * @LastEditors: yankangjie
- * @LastEditTime: 2022-08-07 13:45:57
+ * @LastEditTime: 2022-08-08 10:32:49
  * @FilePath: /index.js
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -71,12 +71,13 @@ router.post("/api/cat-list", async (ctx) => {
 // 增加猫咪
 router.post("/api/add-cat-list", async (ctx) => {
   const { request } = ctx;
-  const { action, title, content } = request.body;
+  const { action, title, content, cover } = request.body;
   if (action === "inc") {
       await cat_list.create({
         title,
         content,
-        read: 0
+        read: 0,
+        cover
       });
   } else if (action === "clear") {
       await cat_list.destroy({
