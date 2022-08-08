@@ -2,7 +2,7 @@
  * @Author: yankangjie
  * @Date: 2022-08-06 12:01:20
  * @LastEditors: yankangjie
- * @LastEditTime: 2022-08-08 20:39:30
+ * @LastEditTime: 2022-08-08 23:15:11
  * @FilePath: /index.js
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -12,7 +12,7 @@ const logger = require("koa-logger");
 const bodyParser = require("koa-bodyparser");
 const fs = require("fs");
 const path = require("path");
-const { init: initDB, Counter, cat_list } = require("./db");
+const { init: initDB, Counter, cat_list, cat_disease, cat_raise } = require("./db");
 
 const router = new Router();
 
@@ -99,17 +99,10 @@ router.post("/api/add-cat-list", async (ctx) => {
 
 // 养猫知识列表
 router.post("/api/cat-disease-list", async (ctx) => {
-    const { request } = ctx;
-    const { title, content, cover } = request.body;
-    await cat_disease.create({
-        title,
-        content,
-        read: 0,
-        cover
-    });
+    const result = await cat_disease.findAll();
     ctx.body = {
         code: 0,
-        data: await cat_disease.count(),
+        data: result,
     };
 });
 
@@ -144,20 +137,12 @@ router.post("/api/add-cat-disease-list", async (ctx) => {
     };
 });
 
-
 // 猫咪疾病列表
 router.post("/api/cat-raise-list", async (ctx) => {
-    const { request } = ctx;
-    const { title, content, cover } = request.body;
-    await cat_raise.create({
-        title,
-        content,
-        read: 0,
-        cover
-    });
+    const result = await cat_raise.findAll();
     ctx.body = {
         code: 0,
-        data: await cat_raise.count(),
+        data: result,
     };
 });
 
